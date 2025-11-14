@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion District — Materials & Fabrics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- Auth overlay: visible until user logs in -->
+    <div id="auth-overlay" class="overlay">
+      <div class="auth-modal">
+        <div class="auth-header">
+          <h2>Welcome to Fashion District</h2>
+          <p>Sign up or login to start browsing premium materials.</p>
+        </div>
+
+        <div class="auth-tabs">
+          <button id="show-login" class="tab active">Login</button>
+          <button id="show-signup" class="tab">Sign up</button>
+        </div>
+
+        <div id="login-form" class="auth-form">
+          <input id="login-email" placeholder="Email" type="email" />
+          <input id="login-password" placeholder="Password" type="password" />
+          <button id="login-btn" class="primary">Login</button>
+        </div>
+
+        <div id="signup-form" class="auth-form hidden">
+          <input id="signup-name" placeholder="Full name" type="text" />
+          <input id="signup-email" placeholder="Email" type="email" />
+          <input id="signup-password" placeholder="Create password" type="password" />
+          <button id="signup-btn" class="primary">Create account</button>
+        </div>
+
+        <p class="small">This demo stores credentials in your browser for convenience (localStorage).</p>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="brand">Fashion District</div>
+      <nav class="nav">
+        <div class="user-area">
+          <button id="auth-btn" class="ghost">Login / Sign up</button>
+          <span id="user-name" class="muted hidden"></span>
+          <button id="logout-btn" class="ghost hidden">Logout</button>
+        </div>
+        <div class="cart" id="cart-btn" title="View cart">👜 <span id="cart-count">0</span></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <h1>Premium Materials for Your Fashion Creations</h1>
+          <p>Silk, cotton, denim, lace and more — sourced and curated for designers and retailers.</p>
+          <button id="start-shop" class="primary">Start shopping</button>
+        </div>
+      </section>
+
+      <!-- Categories booth (Temu-like) -->
+      <section class="categories-booth" id="categories">
+        <div class="products">
+          <h2>Shop by category</h2>
+          <div id="categories-grid" class="category-grid"></div>
+        </div>
+      </section>
+
+      <section class="products" id="products-section">
+        <h2>Products</h2>
+
+        <div class="category-bar">
+          <div class="cats">
+            <button class="cat-btn active" data-cat="all">All</button>
+            <button class="cat-btn" data-cat="clothes">Clothes</button>
+            <button class="cat-btn" data-cat="shoes">Shoes</button>
+            <button class="cat-btn" data-cat="caps">Caps</button>
+            <button class="cat-btn" data-cat="eyewear">Eyewear</button>
+            <button class="cat-btn" data-cat="accessories">Accessories</button>
+            <button class="cat-btn" data-cat="bags">Bags</button>
+            <button class="cat-btn" data-cat="beauty">Beauty</button>
+            <button class="cat-btn" data-cat="office">Office</button>
+            <button class="cat-btn" data-cat="automotive">Automotive</button>
+            <button class="cat-btn" data-cat="crafts">Crafts</button>
+            <button class="cat-btn" data-cat="household">Household</button>
+            <button class="cat-btn" data-cat="partydecorations">Party Decorations</button>
+          </div>
+          <!-- Small-screen category select (populated by JS) -->
+          <select id="cat-select" class="cat-select hidden" aria-label="Category"></select>
+          <div class="search">
+            <div class="search-wrapper">
+              <input id="search-input" class="search-input" placeholder="Search products or keywords" autocomplete="off" />
+              <div id="search-suggestions" class="search-suggestions hidden" role="listbox" aria-label="Search suggestions"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="products-grid" class="grid"></div>
+      </section>
+
+      <section class="about">
+        <h3>Why choose us</h3>
+        <ul>
+          <li>Wholesale and retail options</li>
+          <li>Fast shipping and quality assurance</li>
+          <li>Samples available on request</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>© <span id="year"></span> Fashion District</div>
+      <div class="small">Contact: hello@fashiondistrict.example</div>
+    </footer>
+
+    <div id="cart-panel" class="cart-panel hidden">
+      <h4>Your cart</h4>
+      <div id="cart-items"></div>
+        <div class="cart-actions">
+        <div id="cart-total">Total: ₦0.00</div>
+        <button id="checkout-btn" class="primary">Checkout (demo)</button>
+      </div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="index.js"></script>
+
+    <!-- Product detail modal -->
+    <div id="product-modal" class="product-modal hidden">
+      <div class="pm-content">
+        <button id="pm-close" class="ghost">✕</button>
+        <div class="pm-body">
+          <div id="pm-image" class="pm-image"></div>
+          <div class="pm-info">
+            <h3 id="pm-name"></h3>
+            <p id="pm-desc" class="muted"></p>
+            <div id="pm-price" class="pm-price"></div>
+            <div class="pm-actions">
+              <input id="pm-qty" class="pm-qty" type="number" min="1" value="1" aria-label="Quantity">
+              <button id="pm-add" class="primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

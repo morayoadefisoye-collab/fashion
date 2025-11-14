@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Payment - Fashion District</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <!-- payment page uses shared styles in index.css -->
+</head>
+
+<body class="payment-page">
+    <div class="payment-container">
+        <h2>Payment checkpoint</h2>
+        <div class="box" id="merchant-box">
+            <!-- merchant details rendered by payment.js -->
+        </div>
+
+        <h3 class="payment-heading">Order summary</h3>
+        <div class="box" id="order-summary">
+            <!-- summary rendered by payment.js -->
+        </div>
+
+        <h3 class="payment-heading">Your details</h3>
+        <div class="box">
+            <div class="field-row">
+                <label>Name (optional)<br><input id="buyer-name" class="input-full"></label>
+            </div>
+            <div class="field-row">
+                <label>Email (optional, for receipt)<br><input id="buyer-email" type="email" class="input-full"></label>
+            </div>
+            <div class="flex-row">
+                <input type="checkbox" id="confirm-paid">
+                <label for="confirm-paid">I confirm I have sent payment to the account above</label>
+            </div>
+            <div id="pay-error" class="muted hidden"></div>
+            <div class="btn-row">
+                <button id="pay-back" class="ghost">Back to cart</button>
+                <button id="pay-place" class="primary">Place order</button>
+            </div>
+        </div>
+
+        <div id="confirmation" class="box hidden confirmation">
+            <strong>Thank you!</strong>
+            <div id="confirmation-text" class="muted"></div>
+            <div class="field-row"><button id="confirm-done" class="primary">Done</button></div>
+        </div>
+
+        <!-- Printable receipt (hidden until order placed) -->
+        <div id="receipt" class="box hidden" aria-hidden="true">
+            <div class="payment-receipt-header">
+                <div>
+                    <div class="payment-brand">Fashion District</div>
+                    <div class="muted">Payment receipt</div>
+                </div>
+                <div class="muted" id="receipt-date"></div>
+            </div>
+
+            <hr class="hr-quiet">
+
+            <div id="receipt-body"></div>
+
+            <hr class="hr-quiet">
+
+            <div class="muted" id="receipt-note">Please keep this receipt as proof of payment.</div>
+
+            <div class="payment-receipt-actions">
+                <button id="print-receipt" class="primary">Print receipt</button>
+            </div>
+        </div>
+    </div>
+    <script src="payment.js"></script>
+</body>
+
+</html>
